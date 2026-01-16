@@ -1,0 +1,493 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   CSS Custom Properties - Google Material Design Inspired
+   ============================================================================= */
+:root {
+  /* Primary Colors - Google Blue */
+  --primary-50: #e8f0fe;
+  --primary-100: #d2e3fc;
+  --primary-200: #aecbfa;
+  --primary-300: #8ab4f8;
+  --primary-400: #669df6;
+  --primary-500: #4285f4;
+  --primary-600: #1a73e8;
+  --primary-700: #1967d2;
+  --primary-800: #185abc;
+  --primary-900: #174ea6;
+
+  /* Secondary Colors - Green */
+  --secondary-50: #e6f4ea;
+  --secondary-100: #ceead6;
+  --secondary-500: #34a853;
+  --secondary-600: #1e8e3e;
+  --secondary-700: #188038;
+
+  /* Accent Colors - Orange/Amber */
+  --accent-50: #fef7e0;
+  --accent-500: #fbbc04;
+  --accent-600: #f9ab00;
+
+  /* Error/Danger - Red */
+  --danger-50: #fce8e6;
+  --danger-500: #ea4335;
+  --danger-600: #d93025;
+
+  /* Neutral - Google Grays */
+  --neutral-50: #f8f9fa;
+  --neutral-100: #f1f3f4;
+  --neutral-200: #e8eaed;
+  --neutral-300: #dadce0;
+  --neutral-400: #bdc1c6;
+  --neutral-500: #9aa0a6;
+  --neutral-600: #80868b;
+  --neutral-700: #5f6368;
+  --neutral-800: #3c4043;
+  --neutral-900: #202124;
+
+  /* Risk Colors */
+  --risk-low: #34a853;
+  --risk-medium: #fbbc04;
+  --risk-high: #fa7b17;
+  --risk-critical: #ea4335;
+
+  /* Elevation shadows - Material Design */
+  --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --shadow-md: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  --shadow-lg: 0 2px 6px 2px rgba(60, 64, 67, 0.15), 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+  --shadow-xl: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px 0 rgba(60, 64, 67, 0.3);
+}
+
+/* =============================================================================
+   Base Styles - Material Design Typography
+   ============================================================================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-neutral-800 antialiased;
+    font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: 0.0125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+  }
+
+  h1 { @apply text-2xl font-medium; }
+  h2 { @apply text-xl font-medium; }
+  h3 { @apply text-lg font-medium; }
+
+  /* Focus styles - Material ripple-like */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+}
+
+/* =============================================================================
+   Component Classes - Material Design
+   ============================================================================= */
+@layer components {
+
+  /* Buttons - Material Design Contained */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-primary-600 text-white text-sm font-medium rounded-md transition-all duration-200;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-primary:hover {
+    @apply bg-primary-700;
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-primary:active {
+    @apply bg-primary-800;
+    box-shadow: none;
+  }
+
+  .btn-primary:disabled {
+    @apply bg-neutral-300 text-neutral-500 cursor-not-allowed;
+    box-shadow: none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-secondary-600 text-white text-sm font-medium rounded-md transition-all duration-200;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-secondary:hover {
+    @apply bg-secondary-700;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Outlined Button - Material Design */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-neutral-300 text-primary-600 text-sm font-medium rounded-md bg-white transition-all duration-200;
+  }
+
+  .btn-outline:hover {
+    @apply bg-primary-50 border-primary-200;
+  }
+
+  /* Text Button - Material Design */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-primary-600 text-sm font-medium rounded-md transition-all duration-200;
+  }
+
+  .btn-ghost:hover {
+    @apply bg-primary-50;
+  }
+
+  /* Icon Button - Material Design */
+  .btn-icon {
+    @apply inline-flex items-center justify-center w-10 h-10 rounded-full text-neutral-600 transition-all duration-200;
+  }
+
+  .btn-icon:hover {
+    @apply bg-neutral-100;
+  }
+
+  /* Input Fields - Material Design Outlined */
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border border-neutral-300 rounded text-sm text-neutral-900 placeholder:text-neutral-500 transition-all duration-200;
+  }
+
+  .input-field:hover {
+    @apply border-neutral-400;
+  }
+
+  .input-field:focus {
+    @apply outline-none border-primary-600 ring-1 ring-primary-600;
+  }
+
+  .input-field:disabled {
+    @apply bg-neutral-100 text-neutral-500 cursor-not-allowed border-neutral-200;
+  }
+
+  /* Cards - Material Design Elevated */
+  .card {
+    @apply bg-white rounded-lg overflow-hidden transition-shadow duration-200;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-flat {
+    @apply bg-white rounded-lg border border-neutral-200;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-neutral-100;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  /* Chips/Badges - Material Design */
+  .chip {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .chip-primary {
+    @apply bg-primary-100 text-primary-700;
+  }
+
+  .chip-success {
+    @apply bg-secondary-50 text-secondary-700;
+  }
+
+  .chip-warning {
+    @apply bg-accent-50 text-yellow-800;
+  }
+
+  .chip-danger {
+    @apply bg-danger-50 text-danger-600;
+  }
+
+  .chip-neutral {
+    @apply bg-neutral-100 text-neutral-700;
+  }
+
+  /* Stats Card */
+  .stat-card {
+    @apply bg-white rounded-lg p-5;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-value {
+    @apply text-3xl font-normal text-neutral-900;
+  }
+
+  .stat-label {
+    @apply text-sm text-neutral-600 mt-1;
+  }
+
+  /* Progress Bar - Material Design Linear */
+  .progress-bar {
+    @apply h-1 bg-neutral-200 rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+
+  /* Tabs - Material Design */
+  .tab-item {
+    @apply px-6 py-3 text-sm font-medium text-neutral-600 border-b-2 border-transparent transition-all duration-200;
+  }
+
+  .tab-item:hover {
+    @apply text-primary-600 bg-primary-50;
+  }
+
+  .tab-item.active {
+    @apply text-primary-600 border-primary-600;
+  }
+
+  /* List Item - Material Design */
+  .list-item {
+    @apply flex items-center gap-4 px-4 py-3 hover:bg-neutral-50 transition-colors duration-150 cursor-pointer;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-neutral-200;
+  }
+
+  /* Risk Colors */
+  .risk-bajo {
+    @apply bg-secondary-50 text-secondary-700;
+  }
+
+  .risk-medio {
+    @apply bg-accent-50 text-yellow-800;
+  }
+
+  .risk-alto {
+    @apply bg-orange-50 text-orange-700;
+  }
+
+  .risk-critico {
+    @apply bg-danger-50 text-danger-600;
+  }
+
+  /* Modal/Dialog - Material Design */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50;
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-lg w-full max-h-[90vh] overflow-hidden;
+    box-shadow: 0 11px 15px -7px rgba(0,0,0,0.2), 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12);
+    animation: scaleIn 0.15s ease-out;
+  }
+
+  /* Table - Material Design */
+  .table-header {
+    @apply text-xs font-medium text-neutral-600 uppercase tracking-wider;
+  }
+
+  .table-cell {
+    @apply px-4 py-3 text-sm text-neutral-700;
+  }
+
+  .table-row {
+    @apply border-b border-neutral-100 hover:bg-neutral-50 transition-colors;
+  }
+
+  /* FAB - Floating Action Button */
+  .fab {
+    @apply fixed bottom-6 right-6 w-14 h-14 bg-primary-600 text-white rounded-full flex items-center justify-center transition-all duration-200;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+  }
+
+  .fab:hover {
+    @apply bg-primary-700;
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,0.2), 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12);
+  }
+
+  /* Snackbar */
+  .snackbar {
+    @apply fixed bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 bg-neutral-800 text-white text-sm rounded-md;
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* =============================================================================
+   Utility Classes
+   ============================================================================= */
+@layer utilities {
+
+  /* Elevation utilities */
+  .elevation-0 {
+    box-shadow: none;
+  }
+
+  .elevation-1 {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .elevation-2 {
+    box-shadow: var(--shadow-md);
+  }
+
+  .elevation-3 {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .elevation-4 {
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  /* Hide scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Surface colors - Material Design */
+  .surface-elevated {
+    @apply bg-white;
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+/* =============================================================================
+   Leaflet Map Styles
+   ============================================================================= */
+.leaflet-container {
+  font-family: inherit;
+  z-index: 1;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: white !important;
+  color: #5f6368 !important;
+  border: none !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #f1f3f4 !important;
+  color: #202124 !important;
+}
+
+/* =============================================================================
+   Scrollbar - Material Design Style
+   ============================================================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dadce0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bdc1c6;
+}
+
+/* =============================================================================
+   Print Styles
+   ============================================================================= */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+  }
+
+  .card {
+    break-inside: avoid;
+    border: 1px solid #dadce0;
+    box-shadow: none;
+  }
+}

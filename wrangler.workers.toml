@@ -1,0 +1,27 @@
+name = "planificacion-gestion-api"
+main = "src/worker/index.ts"
+compatibility_date = "2024-08-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "985d023768a24497cde522d6654877b2"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "planificacion-gestion-db"
+database_id = "915d0e2c-680a-48de-b37b-9f4a774da525"
+
+[[kv_namespaces]]
+binding = "KV_CACHE"
+id = "20e0d6cfd3024988bca4afcbfb6c5727"
+
+[[kv_namespaces]]
+binding = "KV_SESSIONS"
+id = "87128bbcc04b4883bcfe4af237cbcfc1"
+
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "planificacion-gestion-files"
+
+[vars]
+ENVIRONMENT = "production"
+APP_NAME = "Plataforma de Gestión de Riesgos Climáticos"
+CONSULTA_PUBLICA_DIAS_MINIMOS = "30"

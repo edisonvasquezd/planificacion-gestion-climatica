@@ -1,0 +1,2008 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "06dc3d8e-314f-4bd5-8520-fc97a02d2043",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "acciones": {
+      "name": "acciones",
+      "columns": {
+        "accion_id": {
+          "name": "accion_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_accion": {
+          "name": "nombre_accion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descripcion_accion": {
+          "name": "descripcion_accion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "responsable_implementacion": {
+          "name": "responsable_implementacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pilar_paccc": {
+          "name": "pilar_paccc",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'N/A'"
+        },
+        "fase_ciclo_riesgo": {
+          "name": "fase_ciclo_riesgo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'N/A'"
+        },
+        "tipo_solucion": {
+          "name": "tipo_solucion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "verificador_sbn": {
+          "name": "verificador_sbn",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "relacion_plan_ids": {
+          "name": "relacion_plan_ids",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
+        "relacion_riesgo_ids": {
+          "name": "relacion_riesgo_ids",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
+        "relacion_gei_sectores": {
+          "name": "relacion_gei_sectores",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
+        "costo_estimado": {
+          "name": "costo_estimado",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "prioridad": {
+          "name": "prioridad",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "acciones_pilar_idx": {
+          "name": "acciones_pilar_idx",
+          "columns": [
+            "pilar_paccc"
+          ],
+          "isUnique": false
+        },
+        "acciones_fase_idx": {
+          "name": "acciones_fase_idx",
+          "columns": [
+            "fase_ciclo_riesgo"
+          ],
+          "isUnique": false
+        },
+        "acciones_tipo_solucion_idx": {
+          "name": "acciones_tipo_solucion_idx",
+          "columns": [
+            "tipo_solucion"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "activos_criticos": {
+      "name": "activos_criticos",
+      "columns": {
+        "activo_id": {
+          "name": "activo_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "diagnostico_id": {
+          "name": "diagnostico_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_activo": {
+          "name": "nombre_activo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_activo": {
+          "name": "tipo_activo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descripcion": {
+          "name": "descripcion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "ubicacion": {
+          "name": "ubicacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "capacidad": {
+          "name": "capacidad",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "criticidad": {
+          "name": "criticidad",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "activos_criticos_tipo_idx": {
+          "name": "activos_criticos_tipo_idx",
+          "columns": [
+            "tipo_activo"
+          ],
+          "isUnique": false
+        },
+        "activos_criticos_diagnostico_idx": {
+          "name": "activos_criticos_diagnostico_idx",
+          "columns": [
+            "diagnostico_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "activos_criticos_diagnostico_id_diagnosticos_diagnostico_id_fk": {
+          "name": "activos_criticos_diagnostico_id_diagnosticos_diagnostico_id_fk",
+          "tableFrom": "activos_criticos",
+          "tableTo": "diagnosticos",
+          "columnsFrom": [
+            "diagnostico_id"
+          ],
+          "columnsTo": [
+            "diagnostico_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "actores": {
+      "name": "actores",
+      "columns": {
+        "actor_id": {
+          "name": "actor_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_actor": {
+          "name": "nombre_actor",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_actor": {
+          "name": "tipo_actor",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "rol_en_plan": {
+          "name": "rol_en_plan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "contacto_nombre": {
+          "name": "contacto_nombre",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "contacto_email": {
+          "name": "contacto_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "contacto_telefono": {
+          "name": "contacto_telefono",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "relacion_plan_ids": {
+          "name": "relacion_plan_ids",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
+        "relacion_accion_ids": {
+          "name": "relacion_accion_ids",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
+        "actas_reunion": {
+          "name": "actas_reunion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "actores_tipo_idx": {
+          "name": "actores_tipo_idx",
+          "columns": [
+            "tipo_actor"
+          ],
+          "isUnique": false
+        },
+        "actores_rol_idx": {
+          "name": "actores_rol_idx",
+          "columns": [
+            "rol_en_plan"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "amenazas": {
+      "name": "amenazas",
+      "columns": {
+        "amenaza_id": {
+          "name": "amenaza_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "diagnostico_id": {
+          "name": "diagnostico_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_amenaza": {
+          "name": "tipo_amenaza",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_amenaza": {
+          "name": "nombre_amenaza",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descripcion_amenaza": {
+          "name": "descripcion_amenaza",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "mapa_amenaza": {
+          "name": "mapa_amenaza",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fuente_datos": {
+          "name": "fuente_datos",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "probabilidad": {
+          "name": "probabilidad",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "intensidad": {
+          "name": "intensidad",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "amenazas_tipo_idx": {
+          "name": "amenazas_tipo_idx",
+          "columns": [
+            "tipo_amenaza"
+          ],
+          "isUnique": false
+        },
+        "amenazas_diagnostico_idx": {
+          "name": "amenazas_diagnostico_idx",
+          "columns": [
+            "diagnostico_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "amenazas_diagnostico_id_diagnosticos_diagnostico_id_fk": {
+          "name": "amenazas_diagnostico_id_diagnosticos_diagnostico_id_fk",
+          "tableFrom": "amenazas",
+          "tableTo": "diagnosticos",
+          "columnsFrom": [
+            "diagnostico_id"
+          ],
+          "columnsTo": [
+            "diagnostico_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "audit_log": {
+      "name": "audit_log",
+      "columns": {
+        "log_id": {
+          "name": "log_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "usuario_id": {
+          "name": "usuario_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "accion": {
+          "name": "accion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "entidad": {
+          "name": "entidad",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "entidad_id": {
+          "name": "entidad_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "datos_anteriores": {
+          "name": "datos_anteriores",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "datos_nuevos": {
+          "name": "datos_nuevos",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "ip_address": {
+          "name": "ip_address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "user_agent": {
+          "name": "user_agent",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "audit_log_usuario_idx": {
+          "name": "audit_log_usuario_idx",
+          "columns": [
+            "usuario_id"
+          ],
+          "isUnique": false
+        },
+        "audit_log_entidad_idx": {
+          "name": "audit_log_entidad_idx",
+          "columns": [
+            "entidad"
+          ],
+          "isUnique": false
+        },
+        "audit_log_created_at_idx": {
+          "name": "audit_log_created_at_idx",
+          "columns": [
+            "created_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "audit_log_usuario_id_usuarios_usuario_id_fk": {
+          "name": "audit_log_usuario_id_usuarios_usuario_id_fk",
+          "tableFrom": "audit_log",
+          "tableTo": "usuarios",
+          "columnsFrom": [
+            "usuario_id"
+          ],
+          "columnsTo": [
+            "usuario_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "consultas_publicas": {
+      "name": "consultas_publicas",
+      "columns": {
+        "consulta_id": {
+          "name": "consulta_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "plan_id": {
+          "name": "plan_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha_inicio": {
+          "name": "fecha_inicio",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha_fin": {
+          "name": "fecha_fin",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "dias_minimos": {
+          "name": "dias_minimos",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 30
+        },
+        "estado_consulta": {
+          "name": "estado_consulta",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Activa'"
+        },
+        "total_participantes": {
+          "name": "total_participantes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "total_observaciones": {
+          "name": "total_observaciones",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "informe_consulta_url": {
+          "name": "informe_consulta_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "consultas_publicas_plan_idx": {
+          "name": "consultas_publicas_plan_idx",
+          "columns": [
+            "plan_id"
+          ],
+          "isUnique": false
+        },
+        "consultas_publicas_estado_idx": {
+          "name": "consultas_publicas_estado_idx",
+          "columns": [
+            "estado_consulta"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "consultas_publicas_plan_id_planes_plan_id_fk": {
+          "name": "consultas_publicas_plan_id_planes_plan_id_fk",
+          "tableFrom": "consultas_publicas",
+          "tableTo": "planes",
+          "columnsFrom": [
+            "plan_id"
+          ],
+          "columnsTo": [
+            "plan_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "diagnosticos": {
+      "name": "diagnosticos",
+      "columns": {
+        "diagnostico_id": {
+          "name": "diagnostico_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "plan_id": {
+          "name": "plan_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descripcion_general": {
+          "name": "descripcion_general",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "diagnosticos_plan_id_planes_plan_id_fk": {
+          "name": "diagnosticos_plan_id_planes_plan_id_fk",
+          "tableFrom": "diagnosticos",
+          "tableTo": "planes",
+          "columnsFrom": [
+            "plan_id"
+          ],
+          "columnsTo": [
+            "plan_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "gestiones": {
+      "name": "gestiones",
+      "columns": {
+        "gestion_id": {
+          "name": "gestion_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "accion_id": {
+          "name": "accion_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "estado_implementacion": {
+          "name": "estado_implementacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Diseño'"
+        },
+        "presupuesto_asignado_clp": {
+          "name": "presupuesto_asignado_clp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "presupuesto_ejecutado_clp": {
+          "name": "presupuesto_ejecutado_clp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "fecha_inicio_programada": {
+          "name": "fecha_inicio_programada",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_fin_programada": {
+          "name": "fecha_fin_programada",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_inicio_real": {
+          "name": "fecha_inicio_real",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_fin_real": {
+          "name": "fecha_fin_real",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "observaciones": {
+          "name": "observaciones",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "gestiones_estado_idx": {
+          "name": "gestiones_estado_idx",
+          "columns": [
+            "estado_implementacion"
+          ],
+          "isUnique": false
+        },
+        "gestiones_accion_idx": {
+          "name": "gestiones_accion_idx",
+          "columns": [
+            "accion_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "gestiones_accion_id_acciones_accion_id_fk": {
+          "name": "gestiones_accion_id_acciones_accion_id_fk",
+          "tableFrom": "gestiones",
+          "tableTo": "acciones",
+          "columnsFrom": [
+            "accion_id"
+          ],
+          "columnsTo": [
+            "accion_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "indicadores": {
+      "name": "indicadores",
+      "columns": {
+        "indicador_id": {
+          "name": "indicador_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "accion_id": {
+          "name": "accion_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_indicador": {
+          "name": "nombre_indicador",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_indicador": {
+          "name": "tipo_indicador",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "unidad_medida": {
+          "name": "unidad_medida",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "linea_base": {
+          "name": "linea_base",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "meta": {
+          "name": "meta",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "frecuencia_medicion": {
+          "name": "frecuencia_medicion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fuente_verificacion": {
+          "name": "fuente_verificacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "indicadores_tipo_idx": {
+          "name": "indicadores_tipo_idx",
+          "columns": [
+            "tipo_indicador"
+          ],
+          "isUnique": false
+        },
+        "indicadores_accion_idx": {
+          "name": "indicadores_accion_idx",
+          "columns": [
+            "accion_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "indicadores_accion_id_acciones_accion_id_fk": {
+          "name": "indicadores_accion_id_acciones_accion_id_fk",
+          "tableFrom": "indicadores",
+          "tableTo": "acciones",
+          "columnsFrom": [
+            "accion_id"
+          ],
+          "columnsTo": [
+            "accion_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "inventarios_gei": {
+      "name": "inventarios_gei",
+      "columns": {
+        "inventario_id": {
+          "name": "inventario_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "diagnostico_id": {
+          "name": "diagnostico_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "anio_linea_base": {
+          "name": "anio_linea_base",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "total_tco2eq": {
+          "name": "total_tco2eq",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "emisiones_sectoriales": {
+          "name": "emisiones_sectoriales",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "metodologia": {
+          "name": "metodologia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fuente_datos": {
+          "name": "fuente_datos",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "inventarios_gei_diagnostico_id_diagnosticos_diagnostico_id_fk": {
+          "name": "inventarios_gei_diagnostico_id_diagnosticos_diagnostico_id_fk",
+          "tableFrom": "inventarios_gei",
+          "tableTo": "diagnosticos",
+          "columnsFrom": [
+            "diagnostico_id"
+          ],
+          "columnsTo": [
+            "diagnostico_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "mediciones": {
+      "name": "mediciones",
+      "columns": {
+        "medicion_id": {
+          "name": "medicion_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "indicador_id": {
+          "name": "indicador_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "fecha_medicion": {
+          "name": "fecha_medicion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "valor_medido": {
+          "name": "valor_medido",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "evidencia_url": {
+          "name": "evidencia_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "observaciones": {
+          "name": "observaciones",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "registrado_por": {
+          "name": "registrado_por",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "mediciones_indicador_idx": {
+          "name": "mediciones_indicador_idx",
+          "columns": [
+            "indicador_id"
+          ],
+          "isUnique": false
+        },
+        "mediciones_fecha_idx": {
+          "name": "mediciones_fecha_idx",
+          "columns": [
+            "fecha_medicion"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "mediciones_indicador_id_indicadores_indicador_id_fk": {
+          "name": "mediciones_indicador_id_indicadores_indicador_id_fk",
+          "tableFrom": "mediciones",
+          "tableTo": "indicadores",
+          "columnsFrom": [
+            "indicador_id"
+          ],
+          "columnsTo": [
+            "indicador_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "mediciones_registrado_por_usuarios_usuario_id_fk": {
+          "name": "mediciones_registrado_por_usuarios_usuario_id_fk",
+          "tableFrom": "mediciones",
+          "tableTo": "usuarios",
+          "columnsFrom": [
+            "registrado_por"
+          ],
+          "columnsTo": [
+            "usuario_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "observaciones_ciudadanas": {
+      "name": "observaciones_ciudadanas",
+      "columns": {
+        "observacion_id": {
+          "name": "observacion_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "plan_id": {
+          "name": "plan_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "seccion_plan": {
+          "name": "seccion_plan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "contenido_observacion": {
+          "name": "contenido_observacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "propuesta_ciudadana": {
+          "name": "propuesta_ciudadana",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "documento_respaldo": {
+          "name": "documento_respaldo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "ubicacion_georeferenciada": {
+          "name": "ubicacion_georeferenciada",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "ciudadano_id": {
+          "name": "ciudadano_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "es_anonimo": {
+          "name": "es_anonimo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "organizacion_representada": {
+          "name": "organizacion_representada",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "estado_observacion": {
+          "name": "estado_observacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Recibida'"
+        },
+        "respuesta_organizacion": {
+          "name": "respuesta_organizacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "justificacion": {
+          "name": "justificacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "responsable_analisis": {
+          "name": "responsable_analisis",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_respuesta": {
+          "name": "fecha_respuesta",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "observaciones_plan_idx": {
+          "name": "observaciones_plan_idx",
+          "columns": [
+            "plan_id"
+          ],
+          "isUnique": false
+        },
+        "observaciones_estado_idx": {
+          "name": "observaciones_estado_idx",
+          "columns": [
+            "estado_observacion"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "observaciones_ciudadanas_plan_id_planes_plan_id_fk": {
+          "name": "observaciones_ciudadanas_plan_id_planes_plan_id_fk",
+          "tableFrom": "observaciones_ciudadanas",
+          "tableTo": "planes",
+          "columnsFrom": [
+            "plan_id"
+          ],
+          "columnsTo": [
+            "plan_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "observaciones_ciudadanas_ciudadano_id_usuarios_usuario_id_fk": {
+          "name": "observaciones_ciudadanas_ciudadano_id_usuarios_usuario_id_fk",
+          "tableFrom": "observaciones_ciudadanas",
+          "tableTo": "usuarios",
+          "columnsFrom": [
+            "ciudadano_id"
+          ],
+          "columnsTo": [
+            "usuario_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "observaciones_ciudadanas_responsable_analisis_usuarios_usuario_id_fk": {
+          "name": "observaciones_ciudadanas_responsable_analisis_usuarios_usuario_id_fk",
+          "tableFrom": "observaciones_ciudadanas",
+          "tableTo": "usuarios",
+          "columnsFrom": [
+            "responsable_analisis"
+          ],
+          "columnsTo": [
+            "usuario_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "organizaciones": {
+      "name": "organizaciones",
+      "columns": {
+        "organizacion_id": {
+          "name": "organizacion_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Municipal'"
+        },
+        "region": {
+          "name": "region",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "provincia": {
+          "name": "provincia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "limites_geograficos": {
+          "name": "limites_geograficos",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "poblacion": {
+          "name": "poblacion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "contacto_email": {
+          "name": "contacto_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "organizaciones_nombre_idx": {
+          "name": "organizaciones_nombre_idx",
+          "columns": [
+            "nombre"
+          ],
+          "isUnique": false
+        },
+        "organizaciones_region_idx": {
+          "name": "organizaciones_region_idx",
+          "columns": [
+            "region"
+          ],
+          "isUnique": false
+        },
+        "organizaciones_tipo_idx": {
+          "name": "organizaciones_tipo_idx",
+          "columns": [
+            "tipo"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "planes": {
+      "name": "planes",
+      "columns": {
+        "plan_id": {
+          "name": "plan_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "organizacion_id": {
+          "name": "organizacion_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_plan": {
+          "name": "nombre_plan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_plan": {
+          "name": "tipo_plan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "version": {
+          "name": "version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'1.0'"
+        },
+        "estado_plan": {
+          "name": "estado_plan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'En elaboración'"
+        },
+        "fecha_aprobacion": {
+          "name": "fecha_aprobacion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_vigencia_inicio": {
+          "name": "fecha_vigencia_inicio",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fecha_vigencia_fin": {
+          "name": "fecha_vigencia_fin",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "responsable_plan": {
+          "name": "responsable_plan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "link_documento_publico": {
+          "name": "link_documento_publico",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "planes_organizacion_idx": {
+          "name": "planes_organizacion_idx",
+          "columns": [
+            "organizacion_id"
+          ],
+          "isUnique": false
+        },
+        "planes_tipo_plan_idx": {
+          "name": "planes_tipo_plan_idx",
+          "columns": [
+            "tipo_plan"
+          ],
+          "isUnique": false
+        },
+        "planes_estado_plan_idx": {
+          "name": "planes_estado_plan_idx",
+          "columns": [
+            "estado_plan"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "planes_organizacion_id_organizaciones_organizacion_id_fk": {
+          "name": "planes_organizacion_id_organizaciones_organizacion_id_fk",
+          "tableFrom": "planes",
+          "tableTo": "organizaciones",
+          "columnsFrom": [
+            "organizacion_id"
+          ],
+          "columnsTo": [
+            "organizacion_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "riesgos": {
+      "name": "riesgos",
+      "columns": {
+        "riesgo_id": {
+          "name": "riesgo_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "amenaza_id": {
+          "name": "amenaza_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "vulnerabilidad_id": {
+          "name": "vulnerabilidad_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "activo_id": {
+          "name": "activo_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "nombre_riesgo": {
+          "name": "nombre_riesgo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nivel_riesgo_calculado": {
+          "name": "nivel_riesgo_calculado",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "justificacion_riesgo": {
+          "name": "justificacion_riesgo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "mapa_riesgo": {
+          "name": "mapa_riesgo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "riesgos_nivel_idx": {
+          "name": "riesgos_nivel_idx",
+          "columns": [
+            "nivel_riesgo_calculado"
+          ],
+          "isUnique": false
+        },
+        "riesgos_amenaza_idx": {
+          "name": "riesgos_amenaza_idx",
+          "columns": [
+            "amenaza_id"
+          ],
+          "isUnique": false
+        },
+        "riesgos_vulnerabilidad_idx": {
+          "name": "riesgos_vulnerabilidad_idx",
+          "columns": [
+            "vulnerabilidad_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "riesgos_amenaza_id_amenazas_amenaza_id_fk": {
+          "name": "riesgos_amenaza_id_amenazas_amenaza_id_fk",
+          "tableFrom": "riesgos",
+          "tableTo": "amenazas",
+          "columnsFrom": [
+            "amenaza_id"
+          ],
+          "columnsTo": [
+            "amenaza_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "riesgos_vulnerabilidad_id_vulnerabilidades_vulnerabilidad_id_fk": {
+          "name": "riesgos_vulnerabilidad_id_vulnerabilidades_vulnerabilidad_id_fk",
+          "tableFrom": "riesgos",
+          "tableTo": "vulnerabilidades",
+          "columnsFrom": [
+            "vulnerabilidad_id"
+          ],
+          "columnsTo": [
+            "vulnerabilidad_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "riesgos_activo_id_activos_criticos_activo_id_fk": {
+          "name": "riesgos_activo_id_activos_criticos_activo_id_fk",
+          "tableFrom": "riesgos",
+          "tableTo": "activos_criticos",
+          "columnsFrom": [
+            "activo_id"
+          ],
+          "columnsTo": [
+            "activo_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "usuarios": {
+      "name": "usuarios",
+      "columns": {
+        "usuario_id": {
+          "name": "usuario_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_completo": {
+          "name": "nombre_completo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "rol": {
+          "name": "rol",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Ciudadano'"
+        },
+        "organizacion_id": {
+          "name": "organizacion_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "clave_unica_rut": {
+          "name": "clave_unica_rut",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "activo": {
+          "name": "activo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "usuarios_email_unique": {
+          "name": "usuarios_email_unique",
+          "columns": [
+            "email"
+          ],
+          "isUnique": true
+        },
+        "usuarios_email_idx": {
+          "name": "usuarios_email_idx",
+          "columns": [
+            "email"
+          ],
+          "isUnique": false
+        },
+        "usuarios_organizacion_idx": {
+          "name": "usuarios_organizacion_idx",
+          "columns": [
+            "organizacion_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "usuarios_organizacion_id_organizaciones_organizacion_id_fk": {
+          "name": "usuarios_organizacion_id_organizaciones_organizacion_id_fk",
+          "tableFrom": "usuarios",
+          "tableTo": "organizaciones",
+          "columnsFrom": [
+            "organizacion_id"
+          ],
+          "columnsTo": [
+            "organizacion_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "vulnerabilidades": {
+      "name": "vulnerabilidades",
+      "columns": {
+        "vulnerabilidad_id": {
+          "name": "vulnerabilidad_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "diagnostico_id": {
+          "name": "diagnostico_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "dimension_vulnerabilidad": {
+          "name": "dimension_vulnerabilidad",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre_vulnerabilidad": {
+          "name": "nombre_vulnerabilidad",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descripcion": {
+          "name": "descripcion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "mapa_vulnerabilidad": {
+          "name": "mapa_vulnerabilidad",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "indice_vulnerabilidad": {
+          "name": "indice_vulnerabilidad",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "poblacion_afectada": {
+          "name": "poblacion_afectada",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "vulnerabilidades_dimension_idx": {
+          "name": "vulnerabilidades_dimension_idx",
+          "columns": [
+            "dimension_vulnerabilidad"
+          ],
+          "isUnique": false
+        },
+        "vulnerabilidades_diagnostico_idx": {
+          "name": "vulnerabilidades_diagnostico_idx",
+          "columns": [
+            "diagnostico_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "vulnerabilidades_diagnostico_id_diagnosticos_diagnostico_id_fk": {
+          "name": "vulnerabilidades_diagnostico_id_diagnosticos_diagnostico_id_fk",
+          "tableFrom": "vulnerabilidades",
+          "tableTo": "diagnosticos",
+          "columnsFrom": [
+            "diagnostico_id"
+          ],
+          "columnsTo": [
+            "diagnostico_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}

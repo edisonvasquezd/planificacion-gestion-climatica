@@ -1,0 +1,7 @@
+name = "planificacion-gestion"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".pages-deploy"
+
+[vars]
+NEXT_PUBLIC_API_URL = "https://planificacion-gestion-api.edison-985.workers.dev"
