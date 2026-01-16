@@ -12,9 +12,9 @@ export default function HomePage() {
                             <Globe className="w-8 h-8 text-primary-600" />
                             <div className="flex flex-col">
                                 <span className="font-heading font-bold text-xl text-primary-600">
-                                    PGRC Platform
+                                    RESILIAI
                                 </span>
-                                <span className="text-[10px] text-neutral-500 -mt-1">by CHUCAW + JHEDAI</span>
+                                <span className="text-[10px] text-neutral-500 -mt-1">Resiliencia Climática Inteligente</span>
                             </div>
                         </div>
                         <nav className="hidden md:flex items-center gap-6">
@@ -73,24 +73,6 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* Stats */}
-            <section className="py-12 bg-white border-b border-neutral-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        {[
-                            { value: "500+", label: "Organizaciones Activas" },
-                            { value: "120", label: "Planes PACCC Activos" },
-                            { value: "180", label: "Planes PGRD Activos" },
-                            { value: "3,200+", label: "Acciones Registradas" },
-                        ].map((stat) => (
-                            <div key={stat.label} className="text-center">
-                                <p className="text-3xl md:text-4xl font-bold text-primary-600">{stat.value}</p>
-                                <p className="text-neutral-600 mt-1">{stat.label}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Features */}
             <section id="caracteristicas" className="py-20 bg-neutral-50">
@@ -175,8 +157,8 @@ export default function HomePage() {
                                 <div className="flex justify-center mb-4">
                                     <Sprout className="w-16 h-16 text-emerald-300" />
                                 </div>
-                                <p className="text-2xl font-bold mb-2">34%</p>
-                                <p className="opacity-90">de las acciones registradas son SbN</p>
+                                <p className="text-lg font-bold mb-2">Integrado</p>
+                                <p className="opacity-90">Verificación automática de criterios SbN</p>
                             </div>
                         </div>
                     </div>
@@ -287,18 +269,12 @@ export default function HomePage() {
                         <div>
                             <div className="flex items-center gap-2 mb-4">
                                 <Globe className="w-6 h-6 text-primary-400" />
-                                <span className="font-heading font-bold text-white">PGRC Platform</span>
+                                <span className="font-heading font-bold text-white">RESILIAI</span>
                             </div>
                             <p className="text-sm mb-3">
                                 Plataforma integrada para la gestión de riesgos climáticos
                                 y desastres para el sector público y privado.
                             </p>
-                            <div className="flex items-center gap-2 text-xs">
-                                <span className="text-neutral-500">Desarrollado por</span>
-                                <span className="font-semibold text-white">CHUCAW</span>
-                                <span className="text-neutral-500">+</span>
-                                <span className="font-semibold text-white">JHEDAI</span>
-                            </div>
                         </div>
                         <div>
                             <h4 className="font-semibold text-white mb-4">Plataforma</h4>
@@ -326,8 +302,7 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-                        <p>© 2026 CHUCAW. Todos los derechos reservados.</p>
-                        <p className="text-neutral-500">Partner tecnológico: JHEDAI</p>
+                        <p>© 2026 RESILIAI. Todos los derechos reservados.</p>
                     </div>
                 </div>
             </footer>

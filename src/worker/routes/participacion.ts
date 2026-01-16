@@ -110,8 +110,8 @@ participacionRouter.get("/consultas/:id", async (c) => {
 // Citizen Observations Routes
 // =============================================================================
 
-// POST /api/participacion/observaciones - Submit observation (PUBLIC with optional auth)
-participacionRouter.post("/observaciones", optionalAuth, async (c) => {
+// POST /api/participacion/observaciones - Submit observation (REQUIRES AUTH)
+participacionRouter.post("/observaciones", requireAuth, async (c) => {
     try {
         const body = await c.req.json();
         const parsed = createObservacionSchema.safeParse(body);
@@ -122,6 +122,13 @@ participacionRouter.post("/observaciones", optionalAuth, async (c) => {
 
         const db = c.get("db");
         const userId = c.get("userId");
+
+        if (!userId) {
+            return c.json({
+                success: false,
+                error: "Debe estar registrado para enviar observaciones"
+            }, 401);
+        }
 
         // Verify plan is in public consultation
         const plan = await db.query.planes.findFirst({
@@ -135,33 +142,75 @@ participacionRouter.post("/observaciones", optionalAuth, async (c) => {
             }, 400);
         }
 
-        // Create observation
+        // Verify consultation is still active
+        const consulta = await db.query.consultasPublicas.findFirst({
+            where: and(
+                eq(consultasPublicas.planId, parsed.data.planId),
+                eq(consultasPublicas.estadoConsulta, "Activa")
+            ),
+        });
+
+        if (!consulta) {
+            return c.json({
+                success: false,
+                error: "El período de consulta pública ha finalizado"
+            }, 400);
+        }
+
+        // Check if consultation period has ended
+        const fechaFin = new Date(consulta.fechaFin);
+        if (new Date() > fechaFin) {
+            return c.json({
+                success: false,
+                error: "El período de consulta pública ha finalizado"
+            }, 400);
+        }
+
+        // Create observation - always associate with registered user
         const [observacion] = await db
             .insert(observacionesCiudadanas)
             .values({
                 ...parsed.data,
-                ciudadanoId: parsed.data.esAnonimo ? null : userId || null,
+                ciudadanoId: userId,
+                esAnonimo: false, // No anonymous submissions
                 estadoObservacion: "Recibida",
             })
             .returning();
 
-        // Update consultation counter
-        const consulta = await db.query.consultasPublicas.findFirst({
-            where: eq(consultasPublicas.planId, parsed.data.planId),
-        });
-        if (consulta) {
-            await db.update(consultasPublicas)
-                .set({
-                    totalObservaciones: consulta.totalObservaciones + 1,
-                    updatedAt: new Date().toISOString(),
-                })
-                .where(eq(consultasPublicas.planId, parsed.data.planId));
-        }
+        // Update consultation counters
+        await db.update(consultasPublicas)
+            .set({
+                totalObservaciones: consulta.totalObservaciones + 1,
+                updatedAt: new Date().toISOString(),
+            })
+            .where(eq(consultasPublicas.consultaId, consulta.consultaId));
 
         return c.json({ success: true, data: observacion }, 201);
     } catch (error) {
         console.error("Create observacion error:", error);
         return c.json({ success: false, error: "Error al enviar observación" }, 500);
+    }
+});
+
+// GET /api/participacion/mis-observaciones - Get observations by current user
+participacionRouter.get("/mis-observaciones", requireAuth, async (c) => {
+    try {
+        const db = c.get("db");
+        const userId = c.get("userId");
+
+        const observaciones = await db.query.observacionesCiudadanas.findMany({
+            where: eq(observacionesCiudadanas.ciudadanoId, userId),
+            orderBy: [desc(observacionesCiudadanas.createdAt)],
+            with: {
+                plan: {
+                    with: { organizacion: true },
+                },
+            },
+        });
+
+        return c.json({ success: true, data: observaciones });
+    } catch (error) {
+        return c.json({ success: false, error: "Error al obtener observaciones" }, 500);
     }
 });
 

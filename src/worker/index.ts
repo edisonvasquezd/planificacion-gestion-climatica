@@ -22,6 +22,7 @@ import { actoresRoutes } from "./routes/actores";
 import { participacionRoutes } from "./routes/participacion";
 import { usuariosRoutes } from "./routes/usuarios";
 import { uploadRoutes } from "./routes/upload";
+import { adminRoutes } from "./routes/admin";
 
 // Create Hono app with typed env
 const app = new Hono<{ Bindings: Env }>();
@@ -87,6 +88,7 @@ app.route("/api/actores", actoresRoutes);
 app.route("/api/participacion", participacionRoutes);
 app.route("/api/usuarios", usuariosRoutes);
 app.route("/api/upload", uploadRoutes);
+app.route("/api/admin", adminRoutes);
 
 // =============================================================================
 // Error Handler

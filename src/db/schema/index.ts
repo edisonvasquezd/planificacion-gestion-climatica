@@ -1,6 +1,6 @@
 // =============================================================================
 // Database Schema - Drizzle ORM for Cloudflare D1 (SQLite)
-// Plataforma de Planificación y Gestión de Riesgos Climáticos
+// RESILIAI - Resiliencia Climática Inteligente
 // =============================================================================
 
 import {

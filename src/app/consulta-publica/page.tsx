@@ -54,7 +54,7 @@ export default function ConsultaPublicaPage() {
                     <Link href="/" className="flex items-center gap-2">
                         <Globe className="w-7 h-7 text-primary-600" />
                         <span className="font-heading font-bold text-primary-600 text-xl">
-                            PGRC Chile
+                            RESILIAI
                         </span>
                     </Link>
                     <Link
@@ -212,7 +212,7 @@ export default function ConsultaPublicaPage() {
             <footer className="bg-neutral-900 text-neutral-400 py-8 mt-12">
                 <div className="max-w-6xl mx-auto px-4 text-center">
                     <p className="text-sm">
-                        © 2026 Plataforma de Gestión de Riesgos Climáticos • Gobierno de Chile
+                        © 2026 RESILIAI • Resiliencia Climática Inteligente
                     </p>
                     <p className="text-xs mt-2">
                         Ley 21.455 (Cambio Climático) • Ley 21.364 (Gestión de Riesgo de Desastres)

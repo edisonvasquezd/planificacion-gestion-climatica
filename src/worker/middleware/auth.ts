@@ -57,7 +57,7 @@ export function requireRole(...roles: string[]) {
 }
 
 /**
- * Middleware to require admin role
+ * Middleware to require admin role (organization admin or platform admin)
  */
 export async function requireAdmin(c: Context<{ Bindings: Env }>, next: Next) {
     const userRol = c.get("userRol");
@@ -65,6 +65,22 @@ export async function requireAdmin(c: Context<{ Bindings: Env }>, next: Next) {
     if (userRol !== "Administrador Plataforma" && userRol !== "Administrador") {
         return c.json(
             { success: false, error: "Se requiere rol de administrador" },
+            403
+        );
+    }
+
+    await next();
+}
+
+/**
+ * Middleware to require platform super admin role only
+ */
+export async function requireSuperAdmin(c: Context<{ Bindings: Env }>, next: Next) {
+    const userRol = c.get("userRol");
+
+    if (userRol !== "Administrador Plataforma") {
+        return c.json(
+            { success: false, error: "Se requiere rol de Administrador de Plataforma" },
             403
         );
     }

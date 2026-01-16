@@ -46,13 +46,21 @@ const createOrganizacionSchema = z.object({
 // Usuario Routes
 // =============================================================================
 
-// GET /api/usuarios - List users (admin only)
+// GET /api/usuarios - List users (admin only, filtered by organization)
 usuariosRouter.get("/", requireAuth, requireAdmin, async (c) => {
     try {
         const db = c.get("db");
-        const { rol, organizacionId, page = "1", limit = "50" } = c.req.query();
+        const userRol = c.get("userRol");
+        const userOrgId = c.get("organizacionId");
+        const { page = "1", limit = "50" } = c.req.query();
+
+        // Platform admin sees all, org admin sees only their org
+        const whereClause = userRol === "Administrador Plataforma"
+            ? undefined
+            : eq(usuarios.organizacionId, userOrgId);
 
         const result = await db.query.usuarios.findMany({
+            where: whereClause,
             orderBy: [desc(usuarios.createdAt)],
             limit: parseInt(limit),
             offset: (parseInt(page) - 1) * parseInt(limit),
@@ -67,6 +75,85 @@ usuariosRouter.get("/", requireAuth, requireAdmin, async (c) => {
         return c.json({ success: true, data: result });
     } catch (error) {
         return c.json({ success: false, error: "Error al listar usuarios" }, 500);
+    }
+});
+
+// POST /api/usuarios - Create user (admin only, for their organization)
+usuariosRouter.post("/", requireAuth, requireAdmin, async (c) => {
+    try {
+        const db = c.get("db");
+        const userRol = c.get("userRol");
+        const userOrgId = c.get("organizacionId");
+
+        const body = await c.req.json();
+
+        // Validate input
+        const createUserSchema = z.object({
+            email: z.string().email(),
+            nombreCompleto: z.string().min(2),
+            rol: z.enum(["Técnico", "Administrador", "Ciudadano"]).default("Técnico"),
+            organizacionId: z.string().uuid().optional(),
+        });
+
+        const parsed = createUserSchema.safeParse(body);
+        if (!parsed.success) {
+            return c.json({ success: false, error: "Datos inválidos", details: parsed.error.errors }, 400);
+        }
+
+        // Check if email exists
+        const existing = await db.query.usuarios.findFirst({
+            where: eq(usuarios.email, parsed.data.email),
+        });
+
+        if (existing) {
+            return c.json({ success: false, error: "El email ya está registrado" }, 409);
+        }
+
+        // Determine organization
+        let targetOrgId = parsed.data.organizacionId;
+        if (userRol !== "Administrador Plataforma") {
+            // Non-platform admins can only create users for their own org
+            targetOrgId = userOrgId;
+        }
+
+        // Generate temporary password
+        const tempPassword = Math.random().toString(36).slice(-8) + "A1!";
+        const encoder = new TextEncoder();
+        const data = encoder.encode(tempPassword);
+        const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+        const passwordHash = btoa(String.fromCharCode(...new Uint8Array(hashBuffer)));
+
+        // Create user
+        const [newUser] = await db
+            .insert(usuarios)
+            .values({
+                email: parsed.data.email,
+                nombreCompleto: parsed.data.nombreCompleto,
+                rol: parsed.data.rol,
+                organizacionId: targetOrgId,
+                passwordHash,
+                activo: true,
+            })
+            .returning({
+                usuarioId: usuarios.usuarioId,
+                email: usuarios.email,
+                nombreCompleto: usuarios.nombreCompleto,
+                rol: usuarios.rol,
+                organizacionId: usuarios.organizacionId,
+                activo: usuarios.activo,
+            });
+
+        return c.json({
+            success: true,
+            data: {
+                usuario: newUser,
+                tempPassword, // Admin should communicate this securely
+                message: "Usuario creado. Comparta la contraseña temporal de forma segura.",
+            },
+        }, 201);
+    } catch (error) {
+        console.error("Create user error:", error);
+        return c.json({ success: false, error: "Error al crear usuario" }, 500);
     }
 });
 

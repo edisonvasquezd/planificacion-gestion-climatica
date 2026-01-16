@@ -61,13 +61,12 @@ export default function RegisterPage() {
                 <div className="text-center mb-8">
                     <Link href="/" className="inline-block">
                         <h1 className="text-3xl font-heading font-bold text-white">
-                            PGRC <span className="text-secondary-400">Platform</span>
+                            RESILIAI
                         </h1>
                     </Link>
                     <p className="text-neutral-300 mt-2">
                         Crear una cuenta nueva
                     </p>
-                    <p className="text-neutral-500 text-xs mt-1">by CHUCAW + JHEDAI</p>
                 </div>
 
                 {/* Register Card */}
@@ -184,7 +183,7 @@ export default function RegisterPage() {
                 </div>
 
                 <p className="text-center text-neutral-400 text-sm mt-8">
-                    © 2026 CHUCAW • Partner: JHEDAI
+                    © 2026 RESILIAI
                 </p>
             </div>
         </main>

@@ -36,13 +36,12 @@ export default function LoginPage() {
                 <div className="text-center mb-8">
                     <Link href="/" className="inline-block">
                         <h1 className="text-3xl font-heading font-bold text-white">
-                            PGRC <span className="text-secondary-400">Platform</span>
+                            RESILIAI
                         </h1>
                     </Link>
                     <p className="text-neutral-300 mt-2">
-                        Plataforma de Gestión de Riesgos Climáticos
+                        Resiliencia Climática Inteligente
                     </p>
-                    <p className="text-neutral-500 text-xs mt-1">by CHUCAW + JHEDAI</p>
                 </div>
 
                 {/* Login Card */}
@@ -124,7 +123,7 @@ export default function LoginPage() {
 
                 {/* Footer */}
                 <p className="text-center text-neutral-400 text-sm mt-8">
-                    © 2026 CHUCAW • Partner: JHEDAI
+                    © 2026 RESILIAI
                 </p>
             </div>
         </main>
